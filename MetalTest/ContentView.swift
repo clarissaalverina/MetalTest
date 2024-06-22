@@ -8,14 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var start = Date.now
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TimelineView(.animation) { tl in
+            let time = start.distance(to: tl.date)
+            
+            VStack {
+                Image(systemName: "rainbow")
+                    .imageScale(.large)
+                    .foregroundStyle(.white)
+                    .font(.system(size: 100))
+                    .colorEffect(
+                        ShaderLibrary.rainbow(
+                            .float(time)
+                        )
+                    )
+            }
+            .padding()
         }
-        .padding()
+        
     }
 }
 

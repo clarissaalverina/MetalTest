@@ -11,6 +11,11 @@
 		BE2223C72C24665D0090CD7E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2223C62C24665D0090CD7E /* ContentView.swift */; };
 		BE2223C92C24665D0090CD7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE2223C82C24665D0090CD7E /* Assets.xcassets */; };
 		BE2223CC2C24665D0090CD7E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE2223CB2C24665D0090CD7E /* Preview Assets.xcassets */; };
+		BE2223D32C2466CA0090CD7E /* Passthrough.metal in Sources */ = {isa = PBXBuildFile; fileRef = BE2223D22C2466CA0090CD7E /* Passthrough.metal */; };
+		BE2223D52C246A490090CD7E /* Rainbow.metal in Sources */ = {isa = PBXBuildFile; fileRef = BE2223D42C246A490090CD7E /* Rainbow.metal */; };
+		BE2223D92C24727E0090CD7E /* WaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2223D82C24727E0090CD7E /* WaterView.swift */; };
+		BE2223DB2C2475750090CD7E /* Water.metal in Sources */ = {isa = PBXBuildFile; fileRef = BE2223DA2C2475750090CD7E /* Water.metal */; };
+		BE2223DF2C24772C0090CD7E /* Sinebow.metal in Sources */ = {isa = PBXBuildFile; fileRef = BE2223DE2C24772C0090CD7E /* Sinebow.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,11 @@
 		BE2223C62C24665D0090CD7E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BE2223C82C24665D0090CD7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE2223CB2C24665D0090CD7E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BE2223D22C2466CA0090CD7E /* Passthrough.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Passthrough.metal; sourceTree = "<group>"; };
+		BE2223D42C246A490090CD7E /* Rainbow.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Rainbow.metal; sourceTree = "<group>"; };
+		BE2223D82C24727E0090CD7E /* WaterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterView.swift; sourceTree = "<group>"; };
+		BE2223DA2C2475750090CD7E /* Water.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Water.metal; sourceTree = "<group>"; };
+		BE2223DE2C24772C0090CD7E /* Sinebow.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Sinebow.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,8 +63,13 @@
 			children = (
 				BE2223C42C24665D0090CD7E /* MetalTestApp.swift */,
 				BE2223C62C24665D0090CD7E /* ContentView.swift */,
+				BE2223D82C24727E0090CD7E /* WaterView.swift */,
 				BE2223C82C24665D0090CD7E /* Assets.xcassets */,
 				BE2223CA2C24665D0090CD7E /* Preview Content */,
+				BE2223D42C246A490090CD7E /* Rainbow.metal */,
+				BE2223DA2C2475750090CD7E /* Water.metal */,
+				BE2223D22C2466CA0090CD7E /* Passthrough.metal */,
+				BE2223DE2C24772C0090CD7E /* Sinebow.metal */,
 			);
 			path = MetalTest;
 			sourceTree = "<group>";
@@ -137,8 +152,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE2223D52C246A490090CD7E /* Rainbow.metal in Sources */,
+				BE2223DB2C2475750090CD7E /* Water.metal in Sources */,
 				BE2223C72C24665D0090CD7E /* ContentView.swift in Sources */,
+				BE2223D32C2466CA0090CD7E /* Passthrough.metal in Sources */,
 				BE2223C52C24665D0090CD7E /* MetalTestApp.swift in Sources */,
+				BE2223D92C24727E0090CD7E /* WaterView.swift in Sources */,
+				BE2223DF2C24772C0090CD7E /* Sinebow.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
