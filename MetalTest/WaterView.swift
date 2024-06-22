@@ -11,14 +11,19 @@ struct WaterView: View {
     @State private var start = Date.now
     @State private var moveToTop = false
     @State private var isFloating = false
-    @State private var startFloating = false
-    
+    @State private var returnToInitial = false
+    @State private var backgroundOffset: CGFloat = 0
+
     var body: some View {
         TimelineView(.animation) { tl in
             let time = start.distance(to: tl.date)
             ZStack {
-                BackgroundImageView(imageName: "sea")
-                BackgroundImageView(imageName: "waves")
+                VStack {
+                    BackgroundImageView(imageName: "sea")
+                        .offset(y: backgroundOffset)
+                }
+                BackgroundImageView2(imageName: "waves")
+                    .offset(y: backgroundOffset)
                     .opacity(0.3)
                     .visualEffect { content, proxy in
                         content
@@ -31,32 +36,30 @@ struct WaterView: View {
                             )
                     }
                 
-                    VStack {
-                        Image("boat2")
-                            .resizable()
-                            .frame(width: 200, height: 200)
-                            .padding(.bottom, 250)
-                            .offset(y: moveToTop ? -UIScreen.main.bounds.height / 10 : UIScreen.main.bounds.height / 8)
-                            .offset(y: isFloating ? -5 : 5)
-                            .onAppear {
-                                withAnimation(Animation.easeInOut(duration: 1.2).repeatForever(autoreverses: true)) {
-                                    isFloating.toggle()
-                                }
-                                if startFloating {
-                                    withAnimation(.easeInOut(duration: 2)) {
-                                        moveToTop.toggle()
-                                    }
-                                }
+                VStack {
+                    Image("boat2")
+                        .resizable()
+                        .frame(width: 200, height: 200)
+                        .padding(.bottom, 250)
+                        .offset(y: moveToTop ? -UIScreen.main.bounds.height / 10 : UIScreen.main.bounds.height / 8)
+                        .offset(y: isFloating ? -5 : 5)
+                        .onAppear {
+                            withAnimation(Animation.easeInOut(duration: 1.2).repeatForever(autoreverses: true)) {
+                                isFloating.toggle()
                             }
-                    }
+                        }
+                }
                 
                 Button("Move") {
                     withAnimation(.easeInOut(duration: 2)) {
                         moveToTop = true
+                        returnToInitial = false
                     }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        withAnimation(Animation.easeInOut(duration: 2).repeatForever(autoreverses: true)) {
-                            isFloating.toggle()
+                        withAnimation(.easeInOut(duration: 2)) {
+                            moveToTop = false
+                            returnToInitial = true
+                            backgroundOffset += 200
                         }
                     }
                 }
@@ -64,12 +67,11 @@ struct WaterView: View {
                 .foregroundColor(.white)
                 .bold()
                 .font(.system(size: 20))
-                
             }
-//            VStack {
+//            VStack
 //                TimelineView(.animation) { tl in
 //                    let time = start.distance(to: tl.date)
-//                    
+//
 //                    VStack {
 //                        Rectangle()
 //                            .visualEffect { content, proxy in
@@ -83,7 +85,6 @@ struct WaterView: View {
 //                    .padding()
 //                }
 //            }
-            
         }
         .edgesIgnoringSafeArea(.all)
     }
@@ -98,12 +99,25 @@ struct BackgroundImageView: View {
                 .resizable()
                 .scaledToFill()
                 .frame(width: geometry.size.width, height: geometry.size.height)
-                .clipped()
         }
         .edgesIgnoringSafeArea(.all)
     }
 }
 
+struct BackgroundImageView2: View {
+    let imageName: String
+    
+    var body: some View {
+        GeometryReader { geometry in
+            Image(imageName)
+                .resizable()
+                .scaledToFill()
+                .frame(width: geometry.size.width, height: geometry.size.height)
+                .clipped()
+        }
+        .edgesIgnoringSafeArea(.all)
+    }
+}
 
 #Preview {
     WaterView()
